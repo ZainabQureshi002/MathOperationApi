@@ -9,7 +9,7 @@ namespace ERP_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // JWT token required for all endpoints
+    //[Authorize] // JWT token required for all endpoints
     public class MathController : ControllerBase
     {
         private readonly IMathService _mathService;
@@ -29,6 +29,7 @@ namespace ERP_API.Controllers
 
         // GET: api/Math/5
         [HttpGet("{id}")]
+        
         public async Task<IActionResult> GetById(int id)
         {
             var operation = await _mathService.GetByIdAsync(id);
