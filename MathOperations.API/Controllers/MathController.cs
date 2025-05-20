@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Erp_Repo.DTOs;    // Aapke pehle wale DTOs yahin hain
+using Erp_Repo.DTOs;    
 using Erp_Repo.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ namespace ERP_API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize] // JWT token required for all endpoints
+    [Authorize] // JWT token required for all endpoints
     public class MathController : ControllerBase
     {
         private readonly IMathService _mathService;
@@ -18,8 +18,6 @@ namespace ERP_API.Controllers
         {
             _mathService = mathService;
         }
-
-        // GET: api/Math
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -27,7 +25,6 @@ namespace ERP_API.Controllers
             return Ok(operations);
         }
 
-        // GET: api/Math/5
         [HttpGet("{id}")]
         
         public async Task<IActionResult> GetById(int id)
@@ -39,7 +36,6 @@ namespace ERP_API.Controllers
             return Ok(operation);
         }
 
-        // POST: api/Math
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateMathOperationDto dto)
         {
@@ -57,7 +53,6 @@ namespace ERP_API.Controllers
             }
         }
 
-        // PUT: api/Math/5
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] MathOperationUpdateDto dto)
         {
@@ -78,7 +73,6 @@ namespace ERP_API.Controllers
             }
         }
 
-        // DELETE: api/Math/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

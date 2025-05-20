@@ -18,7 +18,6 @@ public class AuthController : ControllerBase
     [AllowAnonymous]
     public IActionResult Login([FromBody] LoginDto login)
     {
-        // 1. Validate credentials here (hardcoded or from DB)
         if (login.Username != "testuser" || login.Password != "password")
             return Unauthorized(new { Message = "Invalid credentials" });
 
